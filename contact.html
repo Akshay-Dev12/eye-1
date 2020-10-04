@@ -19,6 +19,7 @@
         }
 
     </script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <!-- portfolio -->
@@ -79,7 +80,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 contact-form">
-                    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScAxiJC9M2k3msZPauw-O6T_26ejH8avORdre1HABDtmqjh8w/formResponse" target="_self" method="post">
+                    <form action="" id="submit-form" >
                         <div class="fields-grid">
                             <div class="styled-input agile-styled-input-top">
                                 <label>Name *</label>
@@ -135,6 +136,25 @@
         </div>
     </section>
     <!-- //footer -->
+	    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://docs.google.com/forms/u/0/d/e/1FAIpQLScAxiJC9M2k3msZPauw-O6T_26ejH8avORdre1HABDtmqjh8w/formResponse",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 
 </body>
 
